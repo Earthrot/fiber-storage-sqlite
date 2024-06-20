@@ -5,7 +5,7 @@ import (
 	"fmt"
 	"time"
 
-	_ "github.com/mattn/go-sqlite3"
+	_ "modernc.org/sqlite"
 )
 
 // Storage interface that is implemented by storage providers
@@ -39,7 +39,7 @@ func New(config ...Config) *Storage {
 	cfg := configDefault(config...)
 
 	// Create db
-	db, err := sql.Open("sqlite3", cfg.Database)
+	db, err := sql.Open("sqlite", cfg.Database)
 	if err != nil {
 		panic(err)
 	}
